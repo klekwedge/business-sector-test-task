@@ -17,6 +17,20 @@
   padding: 15px 25px;
 }
 
+@media (max-width: 425px) {
+  .table__row td,
+  .table__row th {
+    padding: 15px 15px;
+  }
+}
+
+@media (max-width: 375px) {
+  .table__row td,
+  .table__row th {
+    padding: 15px 8px;
+  }
+}
+
 .table__row td {
   color: #474955;
   font-size: 13px;

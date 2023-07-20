@@ -8,10 +8,21 @@
   font-size: 14px;
   font-weight: 600;
   line-height: 137.687%;
-  padding: 15px 25px;
   cursor: pointer;
 }
 
+@media (max-width: 425px) {
+  .heading {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 375px) {
+  .heading {
+    gap: 5px;
+  }
+}
+
 ._active {
-    transform: rotate(180deg);
+  transform: rotate(180deg);
 }
