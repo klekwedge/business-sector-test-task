@@ -13,7 +13,6 @@ function App() {
           <Route path="/:page" element={<Table />} />
           <Route path="/" element={<Table />} />
         </Routes>
-        {/* <Navigation /> */}
       </div>
     </Router>
   );

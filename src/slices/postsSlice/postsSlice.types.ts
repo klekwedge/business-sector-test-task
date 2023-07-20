@@ -1,7 +1,7 @@
 
 export interface CurrentPostsState {
   posts: IPost[];
-  postsLoadingStatus: ILoadingStatus
+  postsLoadingStatus: ILoadingStatus;
 };
 
 export type ILoadingStatus = 'idle' | 'loading' | 'error';

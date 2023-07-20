@@ -8,8 +8,6 @@ function Navigation() {
   const navigate = useNavigate();
   const [activePage, setActivePage] = useState(page && +page);
 
-  console.log(page);
-
   return (
     <div className="navigation">
       <button

@@ -5,46 +5,84 @@ import { useAppDispatch, useAppSelector } from '../../hooks/redux-hook';
 import { fetchPosts } from '../../slices/postsSlice/postsSlice';
 import './Table.scss';
 import Navigation from '../Navigation/Navigation';
+import { IPost } from '../../slices/postsSlice/postsSlice.types';
 
 function Table() {
   const { page } = useParams();
+  const { posts } = useAppSelector((state) => state.posts);
+  const [filteredPosts, setFilteredPosts] = useState<IPost[]>([]);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { posts } = useAppSelector((state) => state.posts);
 
   useEffect(() => {
     dispatch(fetchPosts());
   }, []);
 
+  useEffect(() => {
+    setFilteredPosts(posts);
+  }, [posts]);
+
   if (page === undefined || Number.isNaN(+page) || +page > 5 || +page < 1) {
     navigate('/1');
   }
 
+  const filter = (value: string, isActive: boolean) => {
+    if (value === 'ID' && isActive) {
+      const newFilterPosts = filteredPosts.map((item) => item).sort((a, b) => b.id - a.id);
+      setFilteredPosts(newFilterPosts);
+    }
+
+    if (value === 'ID' && !isActive) {
+      const newFilterPosts = filteredPosts.map((item) => item).sort((a, b) => a.id - b.id);
+      setFilteredPosts(newFilterPosts);
+    }
+
+    if (value === 'Заголовок' && isActive) {
+      const newFilterPosts = filteredPosts.map((item) => item).sort((a, b) => (b.title > a.title ? 1 : -1));
+      setFilteredPosts(newFilterPosts);
+    }
+
+    if (value === 'Заголовок' && !isActive) {
+      const newFilterPosts = filteredPosts.map((item) => item).sort((a, b) => (a.title > b.title ? 1 : -1));
+      setFilteredPosts(newFilterPosts);
+    }
+
+    if (value === 'Описание' && isActive) {
+      const newFilterPosts = filteredPosts.map((item) => item).sort((a, b) => (b.body > a.body ? 1 : -1));
+      setFilteredPosts(newFilterPosts);
+    }
+
+    if (value === 'Описание' && !isActive) {
+      const newFilterPosts = filteredPosts.map((item) => item).sort((a, b) => (a.body > b.body ? 1 : -1));
+      setFilteredPosts(newFilterPosts);
+    }
+  };
+
+  console.log(filteredPosts);
+
   return (
     <>
+      <table className="table">
+        <thead>
+          <tr className="table__row">
+            <TableHeading title="ID" onFilter={filter} />
+            <TableHeading title="Заголовок" onFilter={filter} />
+            <TableHeading title="Описание" onFilter={filter} />
+          </tr>
+        </thead>
 
-    <table className="table">
-      <thead>
-        <tr className="table__row">
-          <TableHeading title="ID" />
-          <TableHeading title="Заголовок" />
-          <TableHeading title="Описание" />
-        </tr>
-      </thead>
-
-      <tbody>
-        {page &&
-          posts.slice((+page - 1) * 10, +page * 10).map((item) => (
-            <tr className="table__row" key={item.id}>
-              <td>{item.id}</td>
-              <td>{item.title}</td>
-              <td>{item.body}</td>
-            </tr>
-          ))}
-      </tbody>
-    </table>
-    <Navigation/>
-
+        <tbody>
+          {page &&
+            filteredPosts.slice((+page - 1) * 10, +page * 10).map((item) => (
+              <tr className="table__row" key={item.id}>
+                <td>{item.id}</td>
+                <td>{item.title}</td>
+                <td>{item.body}</td>
+              </tr>
+            ))}
+        </tbody>
+      </table>
+      <Navigation />
     </>
   );
 }
