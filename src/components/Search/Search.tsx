@@ -4,9 +4,7 @@ import './Search.scss';
 function Search() {
   const [message, setMessage] = useState('');
 
-  const buttonHandler = () => {
-    console.log("e");
-  };
+  const buttonHandler = () => {};
 
   return (
     <div className="search">
