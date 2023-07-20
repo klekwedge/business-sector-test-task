@@ -2,6 +2,7 @@
 export interface CurrentPostsState {
   posts: IPost[];
   postsLoadingStatus: ILoadingStatus;
+  searchInput: string;
 };
 
 export type ILoadingStatus = 'idle' | 'loading' | 'error';

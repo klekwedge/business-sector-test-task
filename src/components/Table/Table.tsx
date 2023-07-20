@@ -6,10 +6,11 @@ import { fetchPosts } from '../../slices/postsSlice/postsSlice';
 import './Table.scss';
 import Navigation from '../Navigation/Navigation';
 import { IPost } from '../../slices/postsSlice/postsSlice.types';
+import Search from '../Search/Search';
 
 function Table() {
   const { page } = useParams();
-  const { posts } = useAppSelector((state) => state.posts);
+  const { posts, searchInput } = useAppSelector((state) => state.posts);
   const [filteredPosts, setFilteredPosts] = useState<IPost[]>([]);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -25,6 +26,12 @@ function Table() {
   if (page === undefined || Number.isNaN(+page) || +page > 5 || +page < 1) {
     navigate('/1');
   }
+
+  // useEffect(() => {
+  //   if (searchInput) {
+  //   } else {
+  //   }
+  // }, [searchInput]);
 
   const filter = (value: string, isActive: boolean) => {
     if (value === 'ID' && isActive) {
@@ -58,10 +65,9 @@ function Table() {
     }
   };
 
-  console.log(filteredPosts);
-
   return (
     <>
+      <Search />
       <table className="table">
         <thead>
           <tr className="table__row">
@@ -73,13 +79,16 @@ function Table() {
 
         <tbody>
           {page &&
-            filteredPosts.slice((+page - 1) * 10, +page * 10).map((item) => (
-              <tr className="table__row" key={item.id}>
-                <td>{item.id}</td>
-                <td>{item.title}</td>
-                <td>{item.body}</td>
-              </tr>
-            ))}
+            filteredPosts
+              .filter((post) => post.title.includes(searchInput) || post.body.includes(searchInput))
+              .slice((+page - 1) * 10, +page * 10)
+              .map((item) => (
+                <tr className="table__row" key={item.id}>
+                  <td>{item.id}</td>
+                  <td>{item.title}</td>
+                  <td>{item.body}</td>
+                </tr>
+              ))}
         </tbody>
       </table>
       <Navigation />

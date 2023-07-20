@@ -5,7 +5,8 @@ import { CurrentPostsState } from './postsSlice.types';
 
 const initialState: CurrentPostsState = {
     posts: [],
-    postsLoadingStatus: 'loading'
+    postsLoadingStatus: 'loading',
+    searchInput: ''
 };
 
 export const fetchPosts = createAsyncThunk('posts/fetchPosts', () => {
@@ -17,6 +18,9 @@ const postsSlice = createSlice({
     name: 'posts',
     initialState,
     reducers: {
+        changeSearchInput: (state, action) => {
+            state.searchInput = action.payload;
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -34,5 +38,7 @@ const postsSlice = createSlice({
 });
 
 const { actions, reducer } = postsSlice;
+
+export const { changeSearchInput } = actions
 
 export default reducer;
