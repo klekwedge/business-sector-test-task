@@ -10,7 +10,6 @@ You can also read this README in [русский](https://github.com/klekwedge/b
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
 - [Author](#author)
 
 ## Deployment instructions
@@ -40,9 +39,6 @@ You can also read this README in [русский](https://github.com/klekwedge/b
 - TypeScript
 - Redux Toolkit
 - SCSS
-- Chakra UI
-
-### What I learned
 
 ## Author
 

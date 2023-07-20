@@ -4,6 +4,7 @@ import TableHeading from '../TableHeading/TableHeading';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux-hook';
 import { fetchPosts } from '../../slices/postsSlice/postsSlice';
 import './Table.scss';
+import Navigation from '../Navigation/Navigation';
 
 function Table() {
   const { page } = useParams();
@@ -12,15 +13,16 @@ function Table() {
   const { posts } = useAppSelector((state) => state.posts);
 
   useEffect(() => {
-    console.log('!');
     dispatch(fetchPosts());
   }, []);
 
-  if (page === undefined || +page > 5 || +page < 1) {
+  if (page === undefined || Number.isNaN(+page) || +page > 5 || +page < 1) {
     navigate('/1');
   }
 
   return (
+    <>
+
     <table className="table">
       <thead>
         <tr className="table__row">
@@ -41,6 +43,9 @@ function Table() {
           ))}
       </tbody>
     </table>
+    <Navigation/>
+
+    </>
   );
 }
 

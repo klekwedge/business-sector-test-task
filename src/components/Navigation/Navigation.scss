@@ -19,9 +19,8 @@
   line-height: 137.687%;
 }
 
-
 .navigation__link_active {
-  color: #7EBC3C;
+  color: #7ebc3c;
 }
 
 .navigation__button {
@@ -30,4 +29,8 @@
   font-size: 24px;
   font-weight: 500;
   line-height: 137.687%;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 }
