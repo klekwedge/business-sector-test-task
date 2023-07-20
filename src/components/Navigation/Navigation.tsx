@@ -15,6 +15,7 @@ function Navigation() {
           .fill(0)
           .map((item, index) => (
             <Link
+              onClick={() => setActivePage(item + 1 + index)}
               className={`navigation__link ${index + 1 === activePage ? 'navigation__link_active' : ''}`}
               id={uuidv4()}
               to={`/${item + 1 + index}`}

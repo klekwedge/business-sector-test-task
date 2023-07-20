@@ -7,7 +7,7 @@ interface TableHeadingProps {
 }
 
 function TableHeading({ title }: TableHeadingProps) {
-  const [isActive, setIsActive] = useState(true);
+  const [isActive, setIsActive] = useState(false);
 
   return (
     <th className="heading" onClick={() => setIsActive((value) => !value)}>
