@@ -1,7 +1,6 @@
 /* eslint-disable no-param-reassign */
-
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-// import useHttp from '../../hooks/http.hook';
+import useHttp from '../../hooks/http.hook';
 import { CurrentPostsState } from './postsSlice.types';
 
 const initialState: CurrentPostsState = {
@@ -9,16 +8,15 @@ const initialState: CurrentPostsState = {
     postsLoadingStatus: 'loading'
 };
 
-export const fetchPosts = createAsyncThunk('posts/fetchPosts', (url: string) => {
+export const fetchPosts = createAsyncThunk('posts/fetchPosts', () => {
     const { request } = useHttp();
-    return request(url);
+    return request('https://jsonplaceholder.typicode.com/posts?_limit=50');
 });
 
 const postsSlice = createSlice({
     name: 'posts',
     initialState,
     reducers: {
-
     },
     extraReducers: (builder) => {
         builder
@@ -38,6 +36,3 @@ const postsSlice = createSlice({
 const { actions, reducer } = postsSlice;
 
 export default reducer;
-// export const {
-
-// } = actions;

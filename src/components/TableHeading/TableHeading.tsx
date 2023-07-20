@@ -12,7 +12,7 @@ function TableHeading({ title }: TableHeadingProps) {
   return (
     <th className="heading" onClick={() => setIsActive((value) => !value)}>
       {title}
-      <img className={`${isActive ? '_active' : ''}`} src="/public/svg/row.svg" alt="Row icon" />
+      <img className={`${isActive ? '_active' : ''}`} src="/svg/row.svg" alt="Row icon" />
     </th>
   );
 }

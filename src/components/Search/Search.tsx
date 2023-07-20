@@ -16,7 +16,7 @@ function Search() {
         placeholder="Поиск"
       />
       <button className="search__button" type="button" onClick={buttonHandler}>
-        <img src="/public/svg/search.svg" alt="Search icon" />
+        <img src="/svg/search.svg" alt="Search icon" />
       </button>
     </div>
   );

@@ -17,7 +17,7 @@ function Navigation() {
             <Link
               onClick={() => setActivePage(item + 1 + index)}
               className={`navigation__link ${index + 1 === activePage ? 'navigation__link_active' : ''}`}
-              id={uuidv4()}
+              key={uuidv4()}
               to={`/${item + 1 + index}`}
             >
               {item + 1 + index}

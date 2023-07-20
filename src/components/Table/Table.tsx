@@ -1,24 +1,45 @@
-import { useState } from 'react';
-
-import './Table.scss';
+import { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import TableHeading from '../TableHeading/TableHeading';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux-hook';
+import { fetchPosts } from '../../slices/postsSlice/postsSlice';
+import './Table.scss';
 
 function Table() {
+  const { page } = useParams();
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const { posts } = useAppSelector((state) => state.posts);
+
+  useEffect(() => {
+    console.log('!');
+    dispatch(fetchPosts());
+  }, []);
+
+  if (page === undefined || +page > 5 || +page < 1) {
+    navigate('/1');
+  }
+
   return (
     <table className="table">
-      <tr className="table__row">
-        <TableHeading title="ID" />
-        <TableHeading title="Заголовок" />
-        <TableHeading title="Описание" />
-      </tr>
-      <tr className='table__row'>
-        <td>1</td>
-        <td>sunt aut facere repellat provident occaecati excepturi optio reprehenderit</td>
-        <td>
-          quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas
-          totam\nnostrum rerum est autem sunt rem eveniet architecto
-        </td>
-      </tr>
+      <thead>
+        <tr className="table__row">
+          <TableHeading title="ID" />
+          <TableHeading title="Заголовок" />
+          <TableHeading title="Описание" />
+        </tr>
+      </thead>
+
+      <tbody>
+        {page &&
+          posts.slice((+page - 1) * 10, +page * 10).map((item) => (
+            <tr className="table__row" key={item.id}>
+              <td>{item.id}</td>
+              <td>{item.title}</td>
+              <td>{item.body}</td>
+            </tr>
+          ))}
+      </tbody>
     </table>
   );
 }

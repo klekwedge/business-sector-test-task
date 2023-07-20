@@ -11,9 +11,10 @@ function App() {
         <Search />
         <Routes>
           <Route path="/:page" element={<Table />} />
+          <Route path="/" element={<Table />} />
         </Routes>
+        <Navigation />
       </div>
-      <Navigation />
     </Router>
   );
 }
