@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import TableHeading from '../TableHeading/TableHeading';
+import TableHeading from '../../components/TableHeading/TableHeading';
+import Search from '../../components/Search/Search';
+import Navigation from '../../components/Navigation/Navigation';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux-hook';
 import { fetchPosts } from '../../slices/postsSlice/postsSlice';
-import './Table.scss';
-import Navigation from '../Navigation/Navigation';
 import { IPost } from '../../slices/postsSlice/postsSlice.types';
-import Search from '../Search/Search';
+import './TablePage.scss';
 
-function Table() {
+function TablePage() {
   const { page } = useParams();
   const { posts, searchInput } = useAppSelector((state) => state.posts);
   const [filteredPosts, setFilteredPosts] = useState<IPost[]>([]);
@@ -96,4 +96,4 @@ function Table() {
   );
 }
 
-export default Table;
+export default TablePage;

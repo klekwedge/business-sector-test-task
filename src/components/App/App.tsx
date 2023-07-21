@@ -1,15 +1,14 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import './App.scss';
-import Table from '../Table/Table';
-import MainPage from '../Pages/MainPage/MainPage';
+import MainPage from '../../pages/MainPage/MainPage';
+import TablePage from '../../pages/TablePage/TablePage';
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/:page" element={<Table />} />
+        <Route path="/:page" element={<TablePage />} />
         <Route path="/" element={<MainPage />} />
-        <Route path="*" element={<Table />} />
+        <Route path="*" element={<h1>Error</h1>} />
       </Routes>
     </Router>
   );
