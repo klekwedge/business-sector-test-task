@@ -8,6 +8,7 @@ import { fetchPosts } from '../../slices/postsSlice/postsSlice';
 import { IPost } from '../../slices/postsSlice/postsSlice.types';
 import './TablePage.scss';
 import Loader from '../../components/Loader/Loader';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 
 function TablePage() {
   const { page } = useParams();
@@ -68,7 +69,11 @@ function TablePage() {
   }
 
   if (postsLoadingStatus === 'error') {
-    console.log('!');
+    return (
+      <div className="container">
+        <ErrorMessage />
+      </div>
+    );
   }
 
   return (
