@@ -27,12 +27,6 @@ function TablePage() {
     navigate('/1');
   }
 
-  // useEffect(() => {
-  //   if (searchInput) {
-  //   } else {
-  //   }
-  // }, [searchInput]);
-
   const filter = (value: string, isActive: boolean) => {
     if (value === 'ID' && isActive) {
       const newFilterPosts = filteredPosts.map((item) => item).sort((a, b) => b.id - a.id);
