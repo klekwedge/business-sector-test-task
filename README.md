@@ -1,48 +1,75 @@
-# Example
+# Тестовое задание для соискателя на должность Frontend разработчик.
 
-You can also read this README in [русский](https://github.com/klekwedge/business-sector-test-task/blob/main/README.RU.md)
+Вы также можете прочитать этот README на [английском](https://github.com/klekwedge/business-sector-test-task/blob/main/README.md)
 
-## Table of contents
+## Оглавление
 
-- [Deployment instructions](#deployment-instructions)
-- [Overview](#overview)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-- [Author](#author)
+- [Инструкции по развертыванию](#инструкции-по-развертыванию)
+- [Обзор](#обзор)
+  - [Общие-требования](#общие-требования)
+  - [Описание-приложения](#описание-приложения:)
+  - [Скриншот](#скриншот)
+  - [Ссылки](#ссылки)
+- [Мой процесс](#мой-процесс)
+  - [Стек](#стек)
+- [Автор](#автор)
 
-## Deployment instructions
+## Инструкции по развертыванию
 
-**To run the project, you need to have [npm](https://nodejs.org/en/) and [git](https://git-scm.com/downloads) installed on your computer**
+**Для запуска проекта на вашем компьютере должны быть установлены [npm](https://nodejs.org/en/) и [git](https://git-scm.com/downloads)**
 
-1. Make a clone of this repository ```git clone https://github.com/klekwedge/business-sector-test-task.git```
-2. Install all required npm packages with ```npm i```
-3. Run the project with the command ```npm run dev```
+1. Сделайте клон этого репозитория ```git clone https://github.com/klekwedge/business-sector-test-task.git```
+2. Установите все необходимые пакеты npm с помощью ```npm i```
+3. Запустите проект командой ```npm run dev```
 
-## Overview
+## Обзор
 
-### Screenshot
+Реализовать spa в соответствии с предложенным макетом, в котором будет представлена таблица с данными пользователей и возможностью сортировки и поиска.
 
-![Main screen](./preview/screenshot.png)
+### Общие требования
 
-### Links
+- Приложение должно работать в chrome и firefox.
+- Разрешается использовать UI фреймворки по типу bootstrap.
+- Код должен быть чистым и читабельным.
+- Не должно быть необоснованного дублирования, всё должно распределяться по компонентам.
+- Код должен быть отформатирован в едином стиле.
+- Вёрстка должна совпадать с макетами figma.
+- Приложение должно быть написано на react.
+- Плюсом будет использование глобального state менеджера redux.
+- Приложение должно быть адаптировано под различные устройства.
 
-- [Solution URL](https://github.com/klekwedge/business-sector-test-task)
-- [Live Site URL](https://klekwedge-example.vercel.app/)
+### Описание приложения
 
-## My process
+- При входе на страницу отображается таблица с данными.
+- На одной странице таблицы показывается только 10 записей.
+- Под таблицей располагаются элементы, показывающие количество страниц таблицы.
+- Кнопки “Назад” и “Далее” переключают страницы таблицы.
+- Переключение между страницами происходит без перезагрузки.
+- При нажатии на заголовки столбцов происходит сортировка записей (от большего к меньшему или по алфавиту).
+- В строке поиска можно ввести любое значение, и в таблице отобразится запись, в которой данное значение присутствует. Поиск по всем столбцам.
+- Страница таблицы должна отображаться в URL браузера.
 
-### Built with
+### Скриншот
+
+![Главный экран](./preview/screenshot.png)
+
+### Ссылки
+
+- [Ссылка на проект](https://github.com/klekwedge/business-sector-test-task)
+- [Деплой](https://klekwedge-example.vercel.app/)
+
+## Мой процесс
+
+### Стек
 
 - React
+- React Router
 - TypeScript
 - Redux Toolkit
 - SCSS
 
-## Author
+## Автор
 
-- [Website](https://klekwedge-cv.vercel.app/)
+- [Вебсайт](https://klekwedge-cv.vercel.app/)
 - [Linkedin](https://www.linkedin.com/in/klekwedge/)
 - [Facebook](https://www.facebook.com/klekwedge)
-
