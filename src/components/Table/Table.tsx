@@ -66,7 +66,7 @@ function Table() {
   };
 
   return (
-    <>
+    <div className="container">
       <Search />
       <table className="table">
         <thead>
@@ -92,7 +92,7 @@ function Table() {
         </tbody>
       </table>
       <Navigation />
-    </>
+    </div>
   );
 }
 
