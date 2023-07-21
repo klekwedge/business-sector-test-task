@@ -7,14 +7,14 @@ import { useAppDispatch, useAppSelector } from '../../hooks/redux-hook';
 import { fetchPosts } from '../../slices/postsSlice/postsSlice';
 import { IPost } from '../../slices/postsSlice/postsSlice.types';
 import './TablePage.scss';
+import Loader from '../../components/Loader/Loader';
 
 function TablePage() {
   const { page } = useParams();
-  const { posts, searchInput } = useAppSelector((state) => state.posts);
+  const { postsLoadingStatus, posts, searchInput } = useAppSelector((state) => state.posts);
   const [filteredPosts, setFilteredPosts] = useState<IPost[]>([]);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-
   useEffect(() => {
     dispatch(fetchPosts());
   }, []);
@@ -58,6 +58,18 @@ function TablePage() {
       setFilteredPosts(newFilterPosts);
     }
   };
+
+  if (postsLoadingStatus === 'loading') {
+    return (
+      <div className="container">
+        <Loader />
+      </div>
+    );
+  }
+
+  if (postsLoadingStatus === 'error') {
+    console.log('!');
+  }
 
   return (
     <div className="container">

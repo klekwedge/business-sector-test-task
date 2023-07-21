@@ -28,6 +28,7 @@ const postsSlice = createSlice({
                 state.postsLoadingStatus = 'loading';
             })
             .addCase(fetchPosts.fulfilled, (state, action) => {
+                console.log('!!121');
                 state.postsLoadingStatus = 'idle';
                 state.posts = action.payload;
             })
