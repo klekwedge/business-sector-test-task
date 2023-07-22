@@ -89,6 +89,9 @@ function TablePage() {
         </thead>
 
         <tbody>
+          {filteredPosts.filter((post) => post.title.includes(searchInput) || post.body.includes(searchInput)).length
+            ? ''
+            : <h2 className='table__result'>Записи не найдены</h2>}
           {page &&
             filteredPosts
               .filter((post) => post.title.includes(searchInput) || post.body.includes(searchInput))
@@ -102,7 +105,7 @@ function TablePage() {
               ))}
         </tbody>
       </table>
-      <Navigation />
+      <Navigation filteredPosts={filteredPosts} searchInput={searchInput}/>
     </div>
   );
 }

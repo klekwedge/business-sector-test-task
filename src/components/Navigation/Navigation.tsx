@@ -2,8 +2,14 @@ import { useState } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import './Navigation.scss';
+import { IPost } from '../../slices/postsSlice/postsSlice.types';
 
-function Navigation() {
+interface NavigationProps {
+  filteredPosts: IPost[];
+  searchInput: string;
+}
+
+function Navigation({ filteredPosts, searchInput }: NavigationProps) {
   const { page } = useParams();
   const navigate = useNavigate();
   const [activePage, setActivePage] = useState(page && +page);
@@ -22,7 +28,12 @@ function Navigation() {
         Назад
       </button>
       <ul className="navigation__list">
-        {Array(5)
+        {Array(
+          Math.ceil(
+            filteredPosts.filter((post) => post.title.includes(searchInput) || post.body.includes(searchInput)).length /
+              10,
+          ),
+        )
           .fill(0)
           .map((item, index) => (
             <Link
