@@ -23,7 +23,11 @@ function Navigation({ filteredPosts, searchInput }: NavigationProps) {
           navigate(`../${activePage && activePage - 1}`);
         }}
         className="navigation__button"
-        disabled={activePage === 1}
+        disabled={
+          activePage === 1 ||
+          filteredPosts.filter((post) => post.title.includes(searchInput) || post.body.includes(searchInput)).length ===
+            0
+        }
       >
         Назад
       </button>
@@ -53,7 +57,15 @@ function Navigation({ filteredPosts, searchInput }: NavigationProps) {
         }}
         type="button"
         className="navigation__button"
-        disabled={activePage === 5}
+        disabled={
+          activePage ===
+            Math.ceil(
+              filteredPosts.filter((post) => post.title.includes(searchInput) || post.body.includes(searchInput))
+                .length / 10,
+            ) ||
+          filteredPosts.filter((post) => post.title.includes(searchInput) || post.body.includes(searchInput)).length ===
+            0
+        }
       >
         Далее
       </button>
