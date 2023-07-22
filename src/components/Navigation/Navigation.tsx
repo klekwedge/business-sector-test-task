@@ -5,11 +5,10 @@ import './Navigation.scss';
 import { IPost } from '../../slices/postsSlice/postsSlice.types';
 
 interface NavigationProps {
-  filteredPosts: IPost[];
-  searchInput: string;
+  filteredPostsLength: number;
 }
 
-function Navigation({ filteredPosts, searchInput }: NavigationProps) {
+function Navigation({ filteredPostsLength }: NavigationProps) {
   const { page } = useParams();
   const navigate = useNavigate();
   const [activePage, setActivePage] = useState(page && +page);
@@ -23,21 +22,12 @@ function Navigation({ filteredPosts, searchInput }: NavigationProps) {
           navigate(`../${activePage && activePage - 1}`);
         }}
         className="navigation__button"
-        disabled={
-          activePage === 1 ||
-          filteredPosts.filter((post) => post.title.includes(searchInput) || post.body.includes(searchInput)).length ===
-            0
-        }
+        disabled={activePage === 1 || filteredPostsLength === 0}
       >
         Назад
       </button>
       <ul className="navigation__list">
-        {Array(
-          Math.ceil(
-            filteredPosts.filter((post) => post.title.includes(searchInput) || post.body.includes(searchInput)).length /
-              10,
-          ),
-        )
+        {Array(Math.ceil(filteredPostsLength / 10))
           .fill(0)
           .map((item, index) => (
             <Link
@@ -57,15 +47,7 @@ function Navigation({ filteredPosts, searchInput }: NavigationProps) {
         }}
         type="button"
         className="navigation__button"
-        disabled={
-          activePage ===
-            Math.ceil(
-              filteredPosts.filter((post) => post.title.includes(searchInput) || post.body.includes(searchInput))
-                .length / 10,
-            ) ||
-          filteredPosts.filter((post) => post.title.includes(searchInput) || post.body.includes(searchInput)).length ===
-            0
-        }
+        disabled={activePage === Math.ceil(filteredPostsLength / 10) || filteredPostsLength === 0}
       >
         Далее
       </button>

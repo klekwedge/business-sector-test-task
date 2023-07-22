@@ -76,6 +76,10 @@ function TablePage() {
     );
   }
 
+  const filteredPostsLength = filteredPosts.filter(
+    (post) => post.title.includes(searchInput) || post.body.includes(searchInput),
+  ).length;
+
   return (
     <div className="container">
       <Search />
@@ -89,9 +93,7 @@ function TablePage() {
         </thead>
 
         <tbody>
-          {filteredPosts.filter((post) => post.title.includes(searchInput) || post.body.includes(searchInput)).length
-            ? ''
-            : <h2 className='table__result'>Записи не найдены</h2>}
+          {filteredPostsLength ? '' : <tr className="table__result"><td>Записи не найдены</td></tr>}
           {page &&
             filteredPosts
               .filter((post) => post.title.includes(searchInput) || post.body.includes(searchInput))
@@ -105,7 +107,7 @@ function TablePage() {
               ))}
         </tbody>
       </table>
-      <Navigation filteredPosts={filteredPosts} searchInput={searchInput}/>
+      <Navigation filteredPostsLength={filteredPostsLength} />
     </div>
   );
 }
