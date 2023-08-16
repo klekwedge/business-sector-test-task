@@ -1,5 +1,7 @@
 # Тестовое задание для соискателя на должность Frontend разработчик.
 
+**You can also read this README in [English](https://github.com/klekwedge/business-sector-test-task/blob/main/README.EN.md).**
+
 ## Оглавление
 
 - [Инструкции по развертыванию](#инструкции-по-развертыванию)
