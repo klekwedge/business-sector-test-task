@@ -1,6 +1,6 @@
 # Test task for the applicant for the position of Frontend developer.
 
-**Вы также можете прочитать этот README на [русском](https://github.com/klekwedge/business-sector-test-task/blob/main/README.md)**
+**Вы также можете прочитать этот README на [русском](https://github.com/klekwedge/custom-table/blob/main/README.md)**
 
 ## Table of contents
 
@@ -17,7 +17,7 @@
 
 **To run the project, you need to have [npm](https://nodejs.org/en/) and [git](https://git-scm.com/downloads) installed on your computer**
 
-1. Make a clone of this repository ```git clone https://github.com/klekwedge/business-sector-test-task.git```
+1. Make a clone of this repository ```git clone https://github.com/klekwedge/custom-table.git```
 2. Install all required npm packages with ```npm i```
 3. Run the project with the command ```npm run dev```
 
@@ -57,8 +57,8 @@ Implement spa in accordance with the proposed layout, which will present a table
 
 ### Links
 
-- [Solution URL](https://github.com/klekwedge/business-sector-test-task)
-- [Live Site URL](https://klekwedge-business-sector-test-task.vercel.app/)
+- [Solution URL](https://github.com/klekwedge/custom-table)
+- [Live Site URL](https://klekwedge-custom-table.vercel.app/)
 
 ## My process
 
